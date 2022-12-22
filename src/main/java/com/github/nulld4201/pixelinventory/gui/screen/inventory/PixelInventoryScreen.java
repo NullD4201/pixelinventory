@@ -1,6 +1,8 @@
 package com.github.nulld4201.pixelinventory.gui.screen.inventory;
 
 import com.github.nulld4201.pixelinventory.Main;
+import com.github.nulld4201.pixelinventory.database.PixelDatabase;
+import com.github.nulld4201.pixelinventory.gui.screen.gem.PixelGemScreen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.inventory.CreativeScreen;
@@ -11,6 +13,10 @@ import net.minecraft.client.util.InputMappings;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ClickType;
 import net.minecraft.util.ResourceLocation;
+
+import java.sql.SQLException;
+
+import static com.github.nulld4201.pixelinventory.Main.database;
 
 public class PixelInventoryScreen extends InventoryScreen {
     private static final ResourceLocation AVATAR_PLUS_VIEW = new ResourceLocation(Main.MOD_ID, "textures/gui/plus_button.png");
@@ -51,6 +57,12 @@ public class PixelInventoryScreen extends InventoryScreen {
 
     @Override
     protected void init() {
+//        try {
+//            database.connect();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+        Main.LOGGER.warn(database.isConnected());
         if (this.minecraft.playerController.isInCreativeMode()) {
             this.minecraft.displayGuiScreen(new CreativeScreen(this.minecraft.player));
         } else {
@@ -65,6 +77,8 @@ public class PixelInventoryScreen extends InventoryScreen {
             ImageButton relicButton = new ImageButton(this.guiLeft + 179 - 4, this.height / 2 - 50 - 4, 34, 12, 0, 0, 12, BUTTON_RELIC_TOGGLE,
                     (button) -> {
                         Main.LOGGER.info("toggle relic");
+                        this.closeScreen();
+                        this.minecraft.displayGuiScreen(new PixelGemScreen());
                     });
             this.addButton(relicButton);
             relicButton.visible = isRelicValid;
@@ -121,6 +135,8 @@ public class PixelInventoryScreen extends InventoryScreen {
         }
     }
 
+    public static int xIn, yIn;
+
     @Override
     @SuppressWarnings("deprecation")
     protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int x, int y) {
@@ -128,6 +144,8 @@ public class PixelInventoryScreen extends InventoryScreen {
         this.minecraft.getTextureManager().bindTexture(PIXEL_INVENTORY_BACKGROUND);
         int i = this.guiLeft;
         int j = this.guiTop;
+        xIn = i - 4;
+        yIn = j - 4;
         this.blit(matrixStack, i - 4, j - 4, 0, 0, 213, 174);
         this.entityPitch = (float)(i + 52) - this.oldMouseX - 4;
         this.entityYaw = (float)(j + 70 - 50) - this.oldMouseY;

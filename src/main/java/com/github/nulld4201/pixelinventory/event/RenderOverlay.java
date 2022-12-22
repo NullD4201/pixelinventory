@@ -6,9 +6,11 @@ package com.github.nulld4201.pixelinventory.event;
 
 import com.github.nulld4201.pixelinventory.Main;
 import com.github.nulld4201.pixelinventory.gui.screen.inventory.PixelInventoryScreen;
+//import com.github.nulld4201.pixelinventory.gui.screen.inventory.container.furnace.PixelFurnaceContainer;
+//import com.github.nulld4201.pixelinventory.gui.screen.inventory.container.furnace.PixelFurnaceScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
-import net.minecraft.client.gui.IngameGui;
+import net.minecraft.client.gui.screen.inventory.FurnaceScreen;
 import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.client.gui.widget.button.ImageButton;
@@ -16,13 +18,14 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -84,6 +87,8 @@ public class RenderOverlay {
     public void onGuiRenderEvent(GuiOpenEvent event) {
         if (event.getGui() instanceof InventoryScreen) {
             event.setGui(new PixelInventoryScreen(this.minecraft.player));
+        } else if (event.getGui() instanceof FurnaceScreen) {
+//            event.setGui(new PixelFurnaceScreen(new PixelFurnaceContainer(0, this.minecraft.player.inventory), this.minecraft.player.inventory, StringTextComponent.EMPTY));
         }
     }
 

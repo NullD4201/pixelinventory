@@ -1,6 +1,7 @@
 package com.github.nulld4201.pixelinventory;
 
 //import com.github.nulld4201.pixelinventory.event.KeyInput;
+import com.github.nulld4201.pixelinventory.database.PixelDatabase;
 import com.github.nulld4201.pixelinventory.event.CommandEvent;
 import com.github.nulld4201.pixelinventory.event.RenderOverlay;
 import com.github.nulld4201.pixelinventory.utils.BindKey;
@@ -20,6 +21,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -29,6 +31,7 @@ public class Main {
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "pixelinventory";
+    public static PixelDatabase database;
 
     public Main() {
         // Register the setup method for modloading
@@ -56,6 +59,7 @@ public class Main {
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         BindKey.register();
+        database = new PixelDatabase();
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 

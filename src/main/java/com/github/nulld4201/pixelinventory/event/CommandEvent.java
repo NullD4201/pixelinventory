@@ -1,5 +1,6 @@
 package com.github.nulld4201.pixelinventory.event;
 
+import com.github.nulld4201.pixelinventory.commands.SetGemVisible;
 import com.github.nulld4201.pixelinventory.commands.SetRelicValid;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -10,5 +11,6 @@ public class CommandEvent {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new SetRelicValid(event.getDispatcher());
+        new SetGemVisible(event.getDispatcher());
     }
 }
