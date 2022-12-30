@@ -1,6 +1,6 @@
 package com.github.nulld4201.pixelinventory.gui.screen.gem;
 
-import com.github.nulld4201.pixelinventory.Main;
+import com.github.nulld4201.pixelinventory.PixelInventoryMain;
 import com.github.nulld4201.pixelinventory.gui.screen.inventory.PixelInventoryScreen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -14,23 +14,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PixelGemScreen extends Screen {
-    private static final ResourceLocation GEM1_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/bat_stone.png");
-    private static final ResourceLocation GEM2_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/devil_stone.png");
-    private static final ResourceLocation GEM3_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/dog_stone.png");
-    private static final ResourceLocation GEM4_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/wood_stone.png");
-    private static final ResourceLocation GEM5_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/soul_stone.png");
-    private static final ResourceLocation GEM6_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/turtle_stone.png");
-    private static final ResourceLocation GEM7_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/viking_stone.png");
-    private static final ResourceLocation GEM8_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/wizard_stone.png");
-    private static final ResourceLocation GEM9_RES = new ResourceLocation(Main.MOD_ID, "textures/gui/gem/mushroom_stone.png");
-    private static final ResourceLocation BUTTON_ITEM_TOGGLE = new ResourceLocation(Main.MOD_ID, "textures/gui/item_enable.png");
-    private static final ResourceLocation PIXEL_RELIC_INVENTORY = new ResourceLocation(Main.MOD_ID, "textures/gui/relicinventory.png");
+    private static final ResourceLocation GEM1_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/bat_stone.png");
+    private static final ResourceLocation GEM2_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/devil_stone.png");
+    private static final ResourceLocation GEM3_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/dog_stone.png");
+    private static final ResourceLocation GEM4_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/wood_stone.png");
+    private static final ResourceLocation GEM5_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/soul_stone.png");
+    private static final ResourceLocation GEM6_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/turtle_stone.png");
+    private static final ResourceLocation GEM7_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/viking_stone.png");
+    private static final ResourceLocation GEM8_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/wizard_stone.png");
+    private static final ResourceLocation GEM9_RES = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/gem/mushroom_stone.png");
+    private static final ResourceLocation BUTTON_ITEM_TOGGLE = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/item_enable.png");
+    private static final ResourceLocation PIXEL_RELIC_INVENTORY = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/relicinventory.png");
 
     public static Map<String, Boolean> gemVisibleMap = new HashMap<>();
 
     public ImageButton gem1 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM1_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem1");
+                PixelInventoryMain.LOGGER.warn("gem1");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -42,7 +42,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem2 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM2_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem2");
+                PixelInventoryMain.LOGGER.warn("gem2");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -54,7 +54,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem3 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM3_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem3");
+                PixelInventoryMain.LOGGER.warn("gem3");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -66,7 +66,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem4 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM4_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem4");
+                PixelInventoryMain.LOGGER.warn("gem4");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -78,7 +78,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem5 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM5_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem5");
+                PixelInventoryMain.LOGGER.warn("gem5");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -90,7 +90,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem6 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM6_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem6");
+                PixelInventoryMain.LOGGER.warn("gem6");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -102,7 +102,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem7 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM7_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem7");
+                PixelInventoryMain.LOGGER.warn("gem7");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -114,7 +114,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem8 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM8_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem8");
+                PixelInventoryMain.LOGGER.warn("gem8");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -126,7 +126,7 @@ public class PixelGemScreen extends Screen {
     );
     public ImageButton gem9 = new ImageButton(0, 0, 16, 16, 0, 0, 0, GEM9_RES, 16, 16,
             (button) -> {
-                Main.LOGGER.warn("gem9");
+                PixelInventoryMain.LOGGER.warn("gem9");
             },
             (tooltipButton, tooltipMatrixStack, tooltipMouseX, tooltipMouseY) -> {
         if (tooltipButton.visible) {
@@ -178,7 +178,7 @@ public class PixelGemScreen extends Screen {
 
         ImageButton relicButton = new ImageButton(this.width / 2 + 87, this.height / 2 - 72, 34, 12, 0, 0, 12, BUTTON_ITEM_TOGGLE,
                 (button) -> {
-                    Main.LOGGER.info("toggle item");
+                    PixelInventoryMain.LOGGER.info("toggle item");
                     this.closeScreen();
                     this.minecraft.displayGuiScreen(new PixelInventoryScreen(this.minecraft.player));
                 });

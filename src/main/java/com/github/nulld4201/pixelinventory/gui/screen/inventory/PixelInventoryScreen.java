@@ -1,7 +1,6 @@
 package com.github.nulld4201.pixelinventory.gui.screen.inventory;
 
-import com.github.nulld4201.pixelinventory.Main;
-import com.github.nulld4201.pixelinventory.database.PixelDatabase;
+import com.github.nulld4201.pixelinventory.PixelInventoryMain;
 import com.github.nulld4201.pixelinventory.gui.screen.gem.PixelGemScreen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -14,15 +13,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ClickType;
 import net.minecraft.util.ResourceLocation;
 
-import java.sql.SQLException;
-
-import static com.github.nulld4201.pixelinventory.Main.database;
+import static com.github.nulld4201.pixelinventory.PixelInventoryMain.database;
 
 public class PixelInventoryScreen extends InventoryScreen {
-    private static final ResourceLocation AVATAR_PLUS_VIEW = new ResourceLocation(Main.MOD_ID, "textures/gui/plus_button.png");
-    private static final ResourceLocation MONEY_BUTTON = new ResourceLocation(Main.MOD_ID, "textures/gui/moneybutton.png");
-    private static final ResourceLocation PIXEL_INVENTORY_BACKGROUND = new ResourceLocation(Main.MOD_ID, "textures/gui/maininventory.png");
-    private static final ResourceLocation BUTTON_RELIC_TOGGLE = new ResourceLocation(Main.MOD_ID, "textures/gui/relic_enable.png");
+    private static final ResourceLocation AVATAR_PLUS_VIEW = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/plus_button.png");
+    private static final ResourceLocation MONEY_BUTTON = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/moneybutton.png");
+    private static final ResourceLocation PIXEL_INVENTORY_BACKGROUND = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/maininventory.png");
+    private static final ResourceLocation BUTTON_RELIC_TOGGLE = new ResourceLocation(PixelInventoryMain.MOD_ID, "textures/gui/relic_enable.png");
 
     public static boolean isAvatarBig;
 
@@ -62,21 +59,21 @@ public class PixelInventoryScreen extends InventoryScreen {
 //        } catch (ClassNotFoundException | SQLException e) {
 //            throw new RuntimeException(e);
 //        }
-        Main.LOGGER.warn(database.isConnected());
+        PixelInventoryMain.LOGGER.warn(database);
         if (this.minecraft.playerController.isInCreativeMode()) {
             this.minecraft.displayGuiScreen(new CreativeScreen(this.minecraft.player));
         } else {
             super.init();
             this.addButton(new ImageButton(this.guiLeft + 72 - 8, this.height / 2 - 12 - 4, 7, 8, 0, 0, 8, AVATAR_PLUS_VIEW,
                     (button) -> {
-                        Main.LOGGER.info("avatar plus");
+                        PixelInventoryMain.LOGGER.info("avatar plus");
                         isAvatarBig = !isAvatarBig;
                         entityBigYaw = 0;
                         entityBigPitch = 0;
                     }));
             ImageButton relicButton = new ImageButton(this.guiLeft + 179 - 4, this.height / 2 - 50 - 4, 34, 12, 0, 0, 12, BUTTON_RELIC_TOGGLE,
                     (button) -> {
-                        Main.LOGGER.info("toggle relic");
+                        PixelInventoryMain.LOGGER.info("toggle relic");
                         this.closeScreen();
                         this.minecraft.displayGuiScreen(new PixelGemScreen());
                     });
@@ -85,49 +82,49 @@ public class PixelInventoryScreen extends InventoryScreen {
 
             money_1000 = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 - 20 - 4, 16, 11, 48, 0, 11, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("click 1000");
+                        PixelInventoryMain.LOGGER.info("click 1000");
                     });
             this.addButton(money_1000);
             money_100 = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 - 8 - 4, 16, 11, 32, 0, 11, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("click 100");
+                        PixelInventoryMain.LOGGER.info("click 100");
                     });
             this.addButton(money_100);
             money_10 = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 + 4 - 4, 16, 11, 16, 0, 11, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("click 10");
+                        PixelInventoryMain.LOGGER.info("click 10");
                     });
             this.addButton(money_10);
             money_1 = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 + 16 - 4, 16, 11, 0, 0, 11, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("click 1");
+                        PixelInventoryMain.LOGGER.info("click 1");
                     });
             this.addButton(money_1);
 
             money_1000_disable = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 - 20 - 4, 16, 11, 48, 22, 0, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("disabled");
+                        PixelInventoryMain.LOGGER.info("disabled");
                         this.minecraft.getSoundHandler().stop();
                     });
             this.addButton(money_1000_disable);
             money_1000_disable.visible = false;
             money_100_disable = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 - 8 - 4, 16, 11, 32, 22, 0, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("disabled");
+                        PixelInventoryMain.LOGGER.info("disabled");
                         this.minecraft.getSoundHandler().stop();
                     });
             this.addButton(money_100_disable);
             money_100_disable.visible = false;
             money_10_disable = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 + 4 - 4, 16, 11, 16, 22, 0, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("disabled");
+                        PixelInventoryMain.LOGGER.info("disabled");
                         this.minecraft.getSoundHandler().stop();
                     });
             this.addButton(money_10_disable);
             money_10_disable.visible = false;
             money_1_disable = new ImageButton(this.guiLeft + 181 - 4, this.height / 2 + 16 - 4, 16, 11, 0, 22, 0, MONEY_BUTTON,
                     (button) -> {
-                        Main.LOGGER.info("disabled");
+                        PixelInventoryMain.LOGGER.info("disabled");
                         this.minecraft.getSoundHandler().stop();
                     });
             this.addButton(money_1_disable);
@@ -183,25 +180,25 @@ public class PixelInventoryScreen extends InventoryScreen {
         } else if (keyCode == 263 && isAvatarBig) {
             if (entityBigYaw < 90) {
                 entityBigYaw += 1;
-                Main.LOGGER.info(entityBigYaw);
+                PixelInventoryMain.LOGGER.info(entityBigYaw);
             }
             return true;
         } else if (keyCode == 262 && isAvatarBig) {
             if (entityBigYaw > -90) {
                 entityBigYaw -= 1;
-                Main.LOGGER.info(entityBigYaw);
+                PixelInventoryMain.LOGGER.info(entityBigYaw);
             }
             return true;
         } else if (keyCode == 265 && isAvatarBig) {
             if (entityPitch < 90) {
                 entityBigPitch += 1;
-                Main.LOGGER.info(entityBigPitch);
+                PixelInventoryMain.LOGGER.info(entityBigPitch);
             }
             return true;
         } else if (keyCode == 264 && isAvatarBig) {
             if (entityPitch > -90) {
                 entityBigPitch -= 1;
-                Main.LOGGER.info(entityBigPitch);
+                PixelInventoryMain.LOGGER.info(entityBigPitch);
             }
             return true;
         }
